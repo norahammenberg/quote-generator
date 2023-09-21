@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,700;1,100;1,200;1,300;1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"> 
+    
     <!--Styles-->
     <link rel="stylesheet" href="style.css">
 
@@ -22,26 +23,23 @@
         <!--Quote element-->
         <div class="quote-text">
             <i class="fas fa-quote-left"></i>
-            <!--we using span becaus it do not tak up anyroom more then the text it self on the website.
-            and we using an id so we can target this element in JS and dynmaecly change the inner text
-            but we starting with statics element when we designing the UX-->
             <span id="quote"></span>
         </div>
+
         <!--Auther element-->
         <div class="quote-auther">
             <span id="auther"></span>
         </div>
-        <!--Buttons element
-        We make a button cointainer to be able to use flex box on the two different burrens separated from the body flex botton.-->
+
+        <!--Buttons element-->
         <div class="button-contianer">
-            <!--title we use so that when you hoover over the icon there will be an explantaion on what the button will do-->
             <button class="twitter-button" id="twitter" title="Tweet This">
                 <i class="fab fa-twitter"></i>
             </button>
-            <!--we use ID to be able to target the button in our JS-->
             <button id="new-quote">New Quote</button>
         </div>
     </div>
+
     <!--loader-->
     <div class="loader" id="loader"></div>
     
