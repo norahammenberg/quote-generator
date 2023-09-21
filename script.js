@@ -37,16 +37,16 @@ function newQuote() {
    //textCOntent let us save the content in a string and we = this const to quote: the random picked quote from the arry. auther because we only like the auther or text. JSON
     //textContentcan both take the text of an element as well as setting the text. In this case we setting the text from the random generated text from the API.
 
-   quoteText.textContent = quote.q;
+   quoteText.textContent = quote.text;
    //check if auther is null write unknown
-    if (!quote.a) {
+    if (!quote.author) {
     autherText.textContent = "Unknown";
    }
    else {
-    autherText.textContent = quote.a;
+    autherText.textContent = quote.author;
    }
    //check the quote lenght to determen styling:
-   if (quote.q.length > 120) {
+   if (quote.text.length > 120) {
     quoteText.classList.add('long-quote');//classList allow us to modife the class of the element. add adding a class remove removes a class. 
    }
    else {
@@ -62,7 +62,7 @@ async function getQuotes() {
     loading();
     //proxy URL toloop arounf the cors problem
     const proxyUrl ='https://cors-anywhere.herokuapp.com/';
-    const apiUrl = 'https://zenquotes.io/api/quotes';
+    const apiUrl = 'https://zenquotes.io/api/quotes/';
    
     //here we trying to fetch the API call
     try {
@@ -74,12 +74,12 @@ async function getQuotes() {
         //the api response is saved in the varible apiquotes and is being converted to json data. 
         apiquotes = await response.json();
         //calling the function newQuote that will generate a random quote:
-        
+        console.log(response);
         newQuote();
     }
     //if this do not work we can catch any arrors here:
     catch (error) {
-        getQuotes();
+        //getQuotes();
         //alert(error)
         //catch error here:
     }
