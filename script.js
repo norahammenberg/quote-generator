@@ -29,17 +29,17 @@ function newQuote() {
     const quote = apiquotes[Math.floor(Math.random() * apiquotes.length)];
 
         //setting the quote taext
-    quoteText.textContent = quote.q;
+    quoteText.textContent = quote.text;
 
     //check if auther is null write unknown
-        if (!quote.a) {
+        if (!quote.author) {
         autherText.textContent = "Unknown";
     }
     else {
-        autherText.textContent = quote.a;
+        autherText.textContent = quote.author;
     }
     //check the quote lenght and add a styling class on the text if the quote is longer then 120 characthers:
-    if (quote.q.length > 120) {
+    if (quote.text.length > 120) {
         quoteText.classList.add('long-quote');//classList allow us to modife the class of the element. add adding a class remove removes a class. 
     }
     else {
@@ -53,15 +53,13 @@ function newQuote() {
 //async can run at anytime and it eill not interfear with the browesrer loading the page: 
 async function getQuotes() {
     loading();
-    //proxy URL, to deal with Cors probem:
-    const proxyUrl ='https://cors-anywhere.herokuapp.com/';
     //api URL:
-    const apiUrl = 'https://zenquotes.io/api/quotes/';
+    const apiUrl = 'https://jacintodesign.github.io/quotes-api/data/quotes.json';
    
     //here we trying to fetch the data from the API:
     try {
         //fetch request
-        const response = await fetch(proxyUrl + apiUrl);
+        const response = await fetch(apiUrl);
 
         //the api response is saved in the varible apiquotes and is being converted to json data. 
         apiquotes = await response.json();
@@ -70,8 +68,7 @@ async function getQuotes() {
     }
     //if TRY don't work, catch catches any error.
     catch (error) {
-        getQuotes();
-        alert(error)
+        //getQuotes();
         //catch error here:
     }
     //
