@@ -68,7 +68,7 @@ async function getQuotes() {
     }
     //if TRY don't work, catch catches any error.
     catch (error) {
-        //getQuotes();
+        getQuotes();
         //catch error here:
     }
     //
