@@ -6,14 +6,12 @@ const twitterBtn = document.getElementById('twitter');
 const newQuoteBTN = document.getElementById('new-quote');
 const loader = document.getElementById('loader');
 
-//fetching in process, leading function:
-function loading() {
+//spinning loader functions:
+function showLoadingSpinner() {
     loader.hidden = false; //the hidden attribute can be used on all html elemern and hiddes an element.
     quoteContainer.hidden = true;
 }
-
-//completed loading function
-function complete() {
+function removeLoadingSpinner() {
     quoteContainer.hidden = false;
     loader.hidden = true; 
 }
@@ -24,7 +22,7 @@ let apiquotes = [];
 //new quote function that randomly generates a new quotes.
 function newQuote() {
     //execute the loading function:
-    loading();
+    showLoadingSpinner();
     //getting a random quote by using Math.random multiple by the arrays lengt to never get a number that is longer then the array it self and wrapped in Math.floor to get a whole number 
     const quote = apiquotes[Math.floor(Math.random() * apiquotes.length)];
 
@@ -46,13 +44,13 @@ function newQuote() {
         quoteText.classList.remove('long-quote');
     }
     //set the quote and hide the loader:
-    complete();
+    removeLoadingSpinner();
 }
 
 //Fetching quotes from an API with an async function:
 //async can run at anytime and it eill not interfear with the browesrer loading the page: 
 async function getQuotes() {
-    loading();
+    showLoadingSpinner();
     //api URL:
     const apiUrl = 'https://jacintodesign.github.io/quotes-api/data/quotes.json';
    
@@ -68,8 +66,8 @@ async function getQuotes() {
     }
     //if TRY don't work, catch catches any error.
     catch (error) {
-        getQuotes();
         //catch error here:
+        //work in progress
     }
     //
 }
